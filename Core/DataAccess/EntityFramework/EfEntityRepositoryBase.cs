@@ -22,6 +22,7 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
+                
                 var entityToAdd = context.Entry(entity);// Kullanıcı tarafından gelen entity yi database tablosundaki ile eşler.
                 entityToAdd.State = EntityState.Added;
                 context.SaveChanges();
@@ -45,6 +46,7 @@ namespace Core.DataAccess.EntityFramework
                 return filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
             }
         }
+
 
         public TEntity GetById(Expression<Func<TEntity, bool>> filter)
         {
