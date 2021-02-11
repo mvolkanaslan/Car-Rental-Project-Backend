@@ -17,7 +17,9 @@ namespace ConsoleUI
             BrandManager brandManager = new BrandManager(new EfBrandDal());
 
             Console.WriteLine("---------- Details of Cars ---------------\n");
-            foreach (var car in carManager.GetCarDetails())
+            var ListofCar = carManager.GetCarDetails();
+            Console.WriteLine(ListofCar.Message+"\n");
+            foreach (var car in ListofCar.Data)
             {
                 Console.WriteLine("{0} --- {1} --- {2} --- {3}", car.CarName,car.BrandName,car.ColorName,car.DailyPrice);
             }
@@ -32,51 +34,8 @@ namespace ConsoleUI
                 ModelYear = 2021,
                 Description = "E350 AMG Cabriolet"
             };
-            Car carToAdd2 = new Car
-            {
-                Id=8,
-                BrandId = 2,
-                ColorId = 3,
-                DailyPrice = 800,
-                ModelYear = 2021,
-                Description = "A8 Spider"
-            };
-
-            // List car on the system
-
-            ListCar(carManager.GetAll());
-            //Add two car and list cars on the system
-            carManager.Add(carToAdd1);
-            carManager.Add(carToAdd2);
-            ListCar(carManager.GetAll());
-
-            //Delete last car on the system and list...
-            Car carToDelete = carManager.GetAll()[carManager.GetAll().Count - 1]; // delete last Car of the database
-            carManager.Delete(carToDelete);
-            ListCar(carManager.GetAll());
-
-            //Update a car
-            Car carToUpdate = new Car
-            {
-                Id = 1,
-                BrandId = 2,
-                ColorId = 1,
-                DailyPrice = 750,
-                ModelYear = 2018,
-                Description = "A3 Sedan Coupé"
-            };
-            carManager.Update(carToUpdate);
-            ListCar(carManager.GetAll());
-
-            //List by BrandId
-            ListCar(carManager.GetCarsByBrandId(1));
-
-            //List by ColorId
-            ListCar(carManager.GetCarsByColorId(2));
-
-
-
-            // Yukarıda yaptığım her database işleminden sonra güncel datayı yazdır.
+            
+            Console.WriteLine(carManager.Add(carToAdd1).Message);
 
             void ListCar(List<Car> cars)
             {
