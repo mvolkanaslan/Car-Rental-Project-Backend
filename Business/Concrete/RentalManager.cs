@@ -22,7 +22,7 @@ namespace Business.Concrete
         public IResult Add(Rental rental)
         {
             //Rentals tablosunda istenen araç var mı ve teslim edilmiş mi.
-            if (_rentalDal.GetAll().Exists(r => r.CarId == rental.CarId && r.ReturnDate==null))
+            if (_rentalDal.GetAll().Exists(r => r.CarId == rental.CarId && r.ReturnDate == null))
             {
                 return new ErrorResult(Messages.RentalInValid);
             }
@@ -43,7 +43,7 @@ namespace Business.Concrete
 
         public IDataResult<Rental> GetById(int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.GetById(r=>r.Id==id),Messages.ListMsg);
+            return new SuccessDataResult<Rental>(_rentalDal.GetById(r=>r.CarId==id),Messages.ListMsg);
         }
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails()

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{E956F786-FFBD-4AD1-A3F7-A1A837E279D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{061B7720-E12E-4E7C-A89F-EE7800F7E703}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{061B7720-E12E-4E7C-A89F-EE7800F7E703}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

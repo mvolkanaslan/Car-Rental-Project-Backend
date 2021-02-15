@@ -21,7 +21,16 @@ namespace ConsoleUI
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
+            // Add Rental
+            Rental rental = new Rental {
+            CarId=1,
+            RentDate=DateTime.Now,
+            CustomerId=3,
+            };
+            Console.WriteLine(rentalManager.Add(rental).Message); 
 
+
+            
             // And user and Customer with together
             User user = new User
             {
@@ -54,7 +63,7 @@ namespace ConsoleUI
             // GetAll - GetById - GetCarsByBrandId(id) - GetCarsByColorId(id)
             var GetCarList = carManager.GetCarsByColorId(1);
             ListCars(GetCarList);
-
+            
             Console.ReadLine();
         }
 
