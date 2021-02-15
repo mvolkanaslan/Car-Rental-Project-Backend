@@ -10,9 +10,12 @@ namespace Business.Constants
         public static string Add_Msg = "Add Operation Successful !";
         public static string AddErrorMsg = "Error : Please enter valid value !";
 
+        public static string RentalValid = "Your Rantel Succesful !";
+        public static string RentalInValid = "The Car Your Selected is Rented !";
+
         public static string DeleteMsg = "Delete Operation Successful !";
         public static string UpdateMsg = "Update Operation Successful !";
-        public static string ListMsg = "Listing Operation Successful !";
+        public static string ListMsg = "\nListing Operation Successful !";
 
 
         public static string ErrorMsg = "An Error occured in this operation !";
