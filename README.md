@@ -1,6 +1,5 @@
-# ReCapProject
-Simulation a Car Rent System
-Database operations: CRUD etc.
-Using EntityFramework and DTO class
+# ReCapProject - Simulation a Car Rent System
 
-![alt text](https://raw.githubusercontent.com/mvolkanaslan/ReCapProject/master/RCP.JPG)
+## Entitiy FrameWork Database operatons
+## ASP.NET WepAPI - DataServices
+
