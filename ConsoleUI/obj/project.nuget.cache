@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "vgib0lN2I9h/v17TW61rJ2Su9dMGBkD2W9itmutJTh0JXP5pP8Q4lLacKPSj+PnoFSZVksSaeiTjfh/mut1DZA==",
+  "dgSpecHash": "LJWPcQYZEiX/BZnuCXTfRj0o4FYSZGH/JuwDgbqlQVZik+fcsiP24SxFF2ETgxDTV2mr37IMExLTkrDAuc/FaQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Vollkan\\source\\repos\\ReCapProject2\\ConsoleUI\\ConsoleUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vollkan\\.nuget\\packages\\autofac\\6.1.0\\autofac.6.1.0.nupkg.sha512",
+    "C:\\Users\\Vollkan\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.1.0\\autofac.extensions.dependencyinjection.7.1.0.nupkg.sha512",
     "C:\\Users\\Vollkan\\.nuget\\packages\\autofac.extras.dynamicproxy\\6.0.0\\autofac.extras.dynamicproxy.6.0.0.nupkg.sha512",
     "C:\\Users\\Vollkan\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
+    "C:\\Users\\Vollkan\\.nuget\\packages\\fluentvalidation\\9.5.1\\fluentvalidation.9.5.1.nupkg.sha512",
     "C:\\Users\\Vollkan\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Vollkan\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "C:\\Users\\Vollkan\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
