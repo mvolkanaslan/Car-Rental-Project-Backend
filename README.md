@@ -5,5 +5,5 @@
 ## ASP.NET WepAPI - Autofac Configuration
 ## Fluent Validation
 ## Aspect Oriented Programing
-[aspect](https://github.com/mvolkanaslan/ReCapProject/blob/master/Images/aspect.JPG)
+![aspect](https://github.com/mvolkanaslan/ReCapProject/blob/master/Images/aspect.JPG)
 
