@@ -8,6 +8,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -25,7 +26,7 @@ namespace Business.Concrete
         public IResult Add(Rental rental)
         {
             //Rentals tablosunda istenen araç var mı ve teslim edilmiş mi.
-            if (_rentalDal.GetAll().Exists(r => r.CarId == rental.CarId && r.ReturnDate == null))
+            if (_rentalDal.GetAll(r => r.CarId == rental.CarId && r.ReturnDate == null).Any())
             {
                 return new ErrorResult(Messages.RentalInValid);
             }

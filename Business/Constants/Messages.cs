@@ -20,5 +20,13 @@ namespace Business.Constants
 
         public static string ErrorMsg = "An Error occured in this operation !";
 
+        #region ImageProcess
+        public static string ImageFormatError = "The file is not an image !";
+        public static string ImageLimitError = "Image Capacity Reached Full !";
+        public static string ImageUploadSuccess = "Image Uploading Success !";
+        public static string CarImageNotFound="Car Image Not Found !";
+        public static string ImageDeleteSuccess= "Image Update Successful !";
+        public static string FileTypeInValid= "File Type Invalid !";
+        #endregion
     }
 }

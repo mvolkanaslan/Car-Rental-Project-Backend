@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.CrossCuttingConcerns.Validation
 {
-    // bu türk tool lar static verilir tek bir instance oluştursu diye
+    // bu tür tool lar static verilir tek bir instance oluştursu diye
     public static class ValidationTool
     {
         public static void Validate(IValidator validator,object entity)

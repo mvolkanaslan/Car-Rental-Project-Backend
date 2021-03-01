@@ -125,3 +125,5 @@ C:\Users\Vollkan\source\repos\ReCapProject2\ConsoleUI\bin\Debug\netcoreapp3.1\Au
 C:\Users\Vollkan\source\repos\ReCapProject2\ConsoleUI\bin\Debug\netcoreapp3.1\Autofac.Extras.DynamicProxy.dll
 C:\Users\Vollkan\source\repos\ReCapProject2\ConsoleUI\bin\Debug\netcoreapp3.1\Castle.Core.dll
 C:\Users\Vollkan\source\repos\ReCapProject2\ConsoleUI\bin\Debug\netcoreapp3.1\FluentValidation.dll
+C:\Users\Vollkan\source\repos\ReCapProject2\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Vollkan\source\repos\ReCapProject2\ConsoleUI\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
