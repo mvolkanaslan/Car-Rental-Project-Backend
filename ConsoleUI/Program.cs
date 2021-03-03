@@ -22,14 +22,7 @@ namespace ConsoleUI
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
             CarImageManager carImageManager = new CarImageManager(new EfCarImageDal());
 
-            var result = carImageManager.GetById(1);
-            if (result.IsSuccess)
-            {
-                foreach (CarImage carImage in result.Data)
-                {
-                    Console.WriteLine(carImage.ImagePath);
-                }
-            }
+            
 
             Console.ReadLine();
         }
