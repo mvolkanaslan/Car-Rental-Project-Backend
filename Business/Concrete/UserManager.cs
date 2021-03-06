@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
@@ -33,22 +34,22 @@ namespace Business.Concrete
             _userDal.Delete(user);
             return new SuccessResult(Messages.DeleteMsg);
         }
-
+        [CacheAspect]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll(),Messages.ListMsg);
         }
-
+        [CacheAspect]
         public IDataResult<User> GetById(int id)
         {
             return new SuccessDataResult<User>(_userDal.GetById(u=>u.Id==id), Messages.ListMsg);
         }
-
+        [CacheAspect]
         public IDataResult<User> GetByMail(string email)
         {
             return new SuccessDataResult<User>(_userDal.GetById(u => u.Email == email));
-        } 
-
+        }
+        [CacheAspect]
         public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
             return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));

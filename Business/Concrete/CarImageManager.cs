@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.FileService;
@@ -46,10 +48,14 @@ namespace Business.Concrete
             FileOperation.DeleteImageFile(carImage.ImagePath);
             return new SuccessResult(Messages.ImageDeleteSuccess);
         }
+        [CacheAspect]
+        [PerformanceAspect(10)]
         public IDataResult<List<CarImage>> GetAll()
         {
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(), Messages.ListMsg);
         }
+        [CacheAspect]
+        [PerformanceAspect(10)]
         public IDataResult<List<CarImage>> GetByCarId(int carId)
         {
             var _imageList = _carImageDal.GetAll(ci => ci.CarId == carId);
@@ -64,6 +70,8 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<CarImage>>(_imageList, Messages.ListMsg);
         }
+        [CacheAspect]
+        [PerformanceAspect(10)]
         public IDataResult<CarImage> GetById(int id)
         {
             return new SuccessDataResult<CarImage>(_carImageDal.GetById(ci => ci.Id == id), Messages.ListMsg);

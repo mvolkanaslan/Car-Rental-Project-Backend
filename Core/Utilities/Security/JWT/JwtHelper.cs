@@ -20,6 +20,7 @@ namespace Core.Utilities.Security.JWT
         {
             Configuration = configuration;
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+            //GetSection ile AppSettingdeki TokenOption Section daki verileri çektik.
 
         }
         public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)
