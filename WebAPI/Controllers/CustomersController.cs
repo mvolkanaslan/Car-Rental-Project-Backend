@@ -24,11 +24,17 @@ namespace WebAPI.Controllers
         {
             var result = _customerService.GetAll();
 
-            if (result.IsSuccess)
-            {
-                return Ok(result);
-            }
+            if (result.IsSuccess) return Ok(result);
             return BadRequest(result);
+        }
+
+        [HttpGet("CustomerDetails")]
+        public IActionResult CustomerDetails()
+        {
+            var result = _customerService.GetCustomerDetails();
+            if (result.IsSuccess) return Ok(result);
+            return BadRequest(result);
+
         }
 
 
