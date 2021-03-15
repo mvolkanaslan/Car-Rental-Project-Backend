@@ -8,17 +8,27 @@ namespace Core.Utilities.FileService
 {
     public class FileOperation
     {
+        static string directory = Directory.GetCurrentDirectory() + @"\wwwroot\";
+        static string path = @"Upload\Images\CarImages\";
+
+        
+
         public static string UploadImageFile(IFormFile imageFile)
         {
-            var fileFormat = Path.GetExtension(imageFile.FileName).ToLower();
-            var filename = Guid.NewGuid().ToString();
-            var path = Path.Combine( @"wwwroot\Upload\Images\CarImages", filename + fileFormat);
-            using (var fileStream = new FileStream(path, FileMode.Create))
+            string fileFormat = Path.GetExtension(imageFile.FileName).ToLower();
+            string fileName = Guid.NewGuid().ToString();
+            string imagePath = Path.Combine( directory+path, fileName + fileFormat);
+            if (!Directory.Exists(directory+path))
+            {
+                Directory.CreateDirectory(directory + path);
+            }
+            using (var fileStream = new FileStream(imagePath, FileMode.Create))
             {
                 imageFile.CopyTo(fileStream);
                 fileStream.Flush();
             }
-            return filename+fileFormat;
+            //return fileName + fileFormat;
+            return path.Replace(@"\","/") + fileName + fileFormat;
         }
         public static void UpdateImageFile(IFormFile imageFile,string imagePath)
         {

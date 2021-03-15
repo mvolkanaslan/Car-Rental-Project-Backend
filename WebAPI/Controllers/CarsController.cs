@@ -60,6 +60,14 @@ namespace WepAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("cardetailsById")]
+        public IActionResult CarDetailsById(int id)
+        {
+            var result = _carService.GetCarDetaisById(id);
+            if (result.IsSuccess) return Ok(result);
+            return BadRequest(result);
+
+        }
 
 
         [HttpGet("ByBrand")]

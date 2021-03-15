@@ -14,6 +14,7 @@ using Entities.DTOs;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -25,13 +26,15 @@ namespace Business.Concrete
         //CarManager sınıfı bu işleri yaptırmak için bir servis kullanmak isteyecek.
         //Bu soyut br servis olmalı ki daha sonra eklenebilecek diğer servisleri entegre atmak onun üzerinden olsun.
         ICarDal _carDal;
+        ICarImageService _carImageService;
 
-        public CarManager(ICarDal carDal)
+        public CarManager(ICarDal carDal, ICarImageService carImageService)
         {
             _carDal = carDal;
+            _carImageService = carImageService;
         }
 
-        [SecuredOperation("product.add")] // authorization business içine yazılır.
+        [SecuredOperation("car.add")] // authorization business içine yazılır.
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
@@ -63,6 +66,18 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(),Messages.ListMsg);
+        }
+
+        public IDataResult<CarDetailDto> GetCarDetaisById(int carId)
+        {
+            List<CarImage> imageFiles = _carImageService.GetByCarId(carId).Data;
+            var carDetails = _carDal.GetCarDetails().Find(car => car.CarId == carId);
+            carDetails.CarImages = imageFiles;
+            return new SuccessDataResult<CarDetailDto>(carDetails, Messages.ListMsg);
+            /*
+             ImageService kullanarak CarDetailDTO nesnesine ait olan CarImages listesini set ettim
+             */
+
         }
 
         [CacheAspect]
