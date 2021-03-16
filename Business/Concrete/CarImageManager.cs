@@ -64,7 +64,7 @@ namespace Business.Concrete
                 return new SuccessDataResult<List<CarImage>>(new List<CarImage> {
                     new CarImage
                     {
-                        ImagePath="default.jpg"
+                        ImagePath="Upload/Images/CarImages/default.jpg"
                     }
                 }, Messages.ListMsg);
             }
