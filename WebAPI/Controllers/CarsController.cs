@@ -54,21 +54,34 @@ namespace WepAPI.Controllers
         {
             var result = _carService.GetCarDetails();
 
-            if (result.IsSuccess)
-            {
-                return Ok(result); // 200 status ile datayı yolluyoruz
-            }
+            if (result.IsSuccess) return Ok(result);
             return BadRequest(result);
         }
-        [HttpGet("cardetailsById")]
+        
+        [HttpGet("CarDetailsByCarId")]
         public IActionResult CarDetailsById(int id)
         {
-            var result = _carService.GetCarDetaisById(id);
+            var result = _carService.GetCarDetailsByCarId(id);
             if (result.IsSuccess) return Ok(result);
             return BadRequest(result);
 
         }
+        [HttpGet("CarDetailsByColorId")]
+        public IActionResult CarDetailsByColorId(int id)
+        {
+            var result = _carService.GetCarDetailsByColorId(id);
+            if (result.IsSuccess) return Ok(result);
+            return BadRequest(result);
 
+        }
+        [HttpGet("CarDetailsByBrandId")]
+        public IActionResult CarDetailsByBrandId(int id)
+        {
+            var result = _carService.GetCarDetailsByBrandId(id);
+            if (result.IsSuccess) return Ok(result);
+            return BadRequest(result);
+
+        }
 
         [HttpGet("ByBrand")]
         public IActionResult ByBrand(int id)

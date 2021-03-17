@@ -65,19 +65,28 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
+
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(),Messages.ListMsg);
         }
 
-        public IDataResult<CarDetailDto> GetCarDetaisById(int carId)
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandId(int id)
         {
-            List<CarImage> imageFiles = _carImageService.GetByCarId(carId).Data;
-            var carDetails = _carDal.GetCarDetails().Find(car => car.CarId == carId);
-            carDetails.CarImages = imageFiles;
-            return new SuccessDataResult<CarDetailDto>(carDetails, Messages.ListMsg);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.BrandId == id), Messages.ListMsg);
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByCarId(int id)
+        {
+            
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c=>c.Id==id), Messages.ListMsg);
             /*
              ImageService kullanarak CarDetailDTO nesnesine ait olan CarImages listesini set ettim
              */
 
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByColorId(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.ColorId == id), Messages.ListMsg);
         }
 
         [CacheAspect]
