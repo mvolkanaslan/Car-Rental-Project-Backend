@@ -57,5 +57,12 @@ namespace WebAPI.Controllers
             if (result.IsSuccess) return Ok(result);
             return BadRequest(result);
         }
+        [HttpGet("GetAll")]
+        public IActionResult GetAll()
+        {
+            var result = _carImageService.GetAll();
+            if (result.IsSuccess) return Ok(result);
+            return BadRequest(result);
+        }
     }
 }

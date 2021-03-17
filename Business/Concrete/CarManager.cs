@@ -78,12 +78,11 @@ namespace Business.Concrete
         {
             
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c=>c.Id==id), Messages.ListMsg);
-            /*
-             ImageService kullanarak CarDetailDTO nesnesine ait olan CarImages listesini set ettim
-             */
+           
 
         }
 
+        [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetCarDetailsByColorId(int id)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.ColorId == id), Messages.ListMsg);
