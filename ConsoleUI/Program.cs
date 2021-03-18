@@ -14,17 +14,6 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
 
-            CarManager carManager = new CarManager(new EfCarDal());
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            UserManager userManager = new UserManager(new EfUserDal());
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            CarImageManager carImageManager = new CarImageManager(new EfCarImageDal());
-
-            
-
-            Console.ReadLine();
         }
 
         
