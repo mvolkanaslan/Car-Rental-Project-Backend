@@ -24,13 +24,18 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(RentalValidator))]
+        [CacheRemoveAspect("IRentalService.Get")]
         public IResult Add(Rental rental)
         {
-            //Rentals tablosunda istenen araç var mı ve teslim edilmiş mi.
-            if (_rentalDal.GetAll(r => r.CarId == rental.CarId && r.ReturnDate == null).Any())
-            {
-                return new ErrorResult(Messages.RentalInValid);
-            }
+            //Bu  iş kuralını exeption a dahil ettikten sonra business rule aktaracağım şimdilik deneme sağlasın diye burada
+            var result = _rentalDal.GetAll();
+            if (result.Where(r => r.CarId == rental.CarId && r.ReturnDate == null).Any())
+                    return new ErrorResult(Messages.RentalInValid);
+            else if (result.Where(r=> r.CarId == rental.CarId 
+                    && r.ReturnDate.Value.Ticks>rental.RentDate.Ticks
+                    && r.RentDate.Ticks < rental.ReturnDate.Value.Ticks).Any())
+                    return new ErrorResult(Messages.RentalInValid);
+
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.RentalValid);
         }
