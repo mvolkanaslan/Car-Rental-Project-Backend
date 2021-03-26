@@ -12,8 +12,7 @@ namespace Business.Constants
         public static string Add_Msg = "Add Operation Successful !";
         public static string AddErrorMsg = "Error : Please enter valid value !";
 
-        public static string RentalValid = "Your Rantel Succesful !";
-        public static string RentalInValid = "The Car Your Selected is Rented !";
+        
 
         public static string DeleteMsg = "Delete Operation Successful !";
         public static string UpdateMsg = "Update Operation Successful !";
@@ -39,5 +38,15 @@ namespace Business.Constants
         public static string UserNotFound = "User not Found !";
         public static string UserRegistered = "The User Registered !";
         #endregion
+
+        #region Rent Operation
+        public static string CarIsRentable = "The Car is Rentable";
+        public static string RentalValid = "Your Rantel Succesful !";
+        public static string RentalInValid = "The Selected Car is already Rented !";
+
+        #endregion
+
+        public static string PaymentSuccessful="Payment is Success !";
+        public static string PaymentUnSeccessful= "InValid Card or Insufficient Amount !";
     }
 }
