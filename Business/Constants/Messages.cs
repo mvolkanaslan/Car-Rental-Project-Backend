@@ -31,7 +31,7 @@ namespace Business.Constants
 
         #region Authorization
         public static string AuthorizationDenied = "You are not Authorized";
-        public static string AccessTokenCreated = "Token Creation Successful !";
+        public static string AccessTokenCreated = "Login Successful !";
         public static string UserAlreadyExists = "User Already Exist !";
         public static string SuccessfulLogin = "Login Successful !";
         public static string PasswordError = "Password is invalid !";

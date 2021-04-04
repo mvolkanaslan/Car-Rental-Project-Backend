@@ -29,27 +29,28 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Add_Msg);
         }
 
+        
         public IResult Delete(User user)
         {
             _userDal.Delete(user);
             return new SuccessResult(Messages.DeleteMsg);
         }
-        [CacheAspect]
+        
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll(),Messages.ListMsg);
         }
-        [CacheAspect]
+        
         public IDataResult<User> GetById(int id)
         {
             return new SuccessDataResult<User>(_userDal.GetById(u=>u.Id==id), Messages.ListMsg);
         }
-        [CacheAspect]
+        
         public IDataResult<User> GetByMail(string email)
         {
             return new SuccessDataResult<User>(_userDal.GetById(u => u.Email == email));
         }
-        [CacheAspect]
+        
         public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
             return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));

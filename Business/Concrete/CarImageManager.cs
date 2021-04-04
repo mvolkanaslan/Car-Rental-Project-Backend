@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
@@ -28,6 +29,8 @@ namespace Business.Concrete
             _carImageDal = carImageDal;
         }
         [ValidationAspect(typeof(CarImageAddValidator))]
+        [CacheRemoveAspect("ICarImageService.Get")]
+        [SecuredOperation("admin")]
         public IResult Add(CarImageDto carImageDto)
         {
             IResult result = BusinessRules.Run(CarImagesLimitControl(carImageDto.CarId));
@@ -41,7 +44,8 @@ namespace Business.Concrete
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.ImageUploadSuccess);
         }
-
+        [SecuredOperation("admin")]
+        [CacheRemoveAspect("ICarImageService.Get")]
         public IResult Delete(CarImage carImage)
         {
            _carImageDal.Delete(carImage);
@@ -78,6 +82,8 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CarImageUpdateValidator))]
+        [SecuredOperation("admin")]
+        [CacheRemoveAspect("ICarImageService.Get")]
         public IResult Update(CarImageDto carImageDto)
         {
             var dbImage = _carImageDal.GetById(ci => ci.Id == carImageDto.Id);

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
@@ -23,12 +24,14 @@ namespace Business.Concrete
 
         [ValidationAspect(typeof(BrandValidator))]
         [CacheRemoveAspect("IBrandService.Get")]
+        [SecuredOperation("admin")]
         public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
             return new SuccessResult(Messages.Add_Msg);
         }
         [CacheRemoveAspect("IBrandService.Get")]
+        [SecuredOperation("admin")]
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
@@ -46,6 +49,7 @@ namespace Business.Concrete
         }
         [ValidationAspect(typeof(BrandValidator))]
         [CacheRemoveAspect("IBrandService.Get")]
+        [SecuredOperation("admin")]
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
