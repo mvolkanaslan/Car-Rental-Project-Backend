@@ -34,6 +34,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ColorName = color.ColorName,
                                  DailyPrice = car.DailyPrice,
                                  ModelYear=car.ModelYear,
+                                 FindexScore=car.FindexScore,
                                  ImagePath= (from carImage in context.CarImages
                                             where (carImage.CarId==car.Id)
                                             select carImage).FirstOrDefault().ImagePath

@@ -30,7 +30,7 @@ namespace Business.Concrete
         }
         [ValidationAspect(typeof(CarImageAddValidator))]
         [CacheRemoveAspect("ICarImageService.Get")]
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         public IResult Add(CarImageDto carImageDto)
         {
             IResult result = BusinessRules.Run(CarImagesLimitControl(carImageDto.CarId));

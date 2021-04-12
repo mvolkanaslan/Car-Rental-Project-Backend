@@ -17,10 +17,14 @@ namespace Business.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
+        ICustomerService _customerService;
+        ICarService _carService;
 
-        public RentalManager(IRentalDal rentalDal)
+        public RentalManager(IRentalDal rentalDal,ICustomerService customerService,ICarService carService)
         {
             _rentalDal = rentalDal;
+            _customerService = customerService;
+            _carService = carService;
         }
 
         [ValidationAspect(typeof(RentalValidator))]
@@ -61,6 +65,16 @@ namespace Business.Concrete
                     && r.RentDate.Ticks <= rental.ReturnDate.Ticks).Any())
                 return new ErrorResult(Messages.RentalInValid);
             return new SuccessResult(Messages.CarIsRentable);
+        }
+        public IResult CheckFindexScore(int customerId, int carId)
+        {
+            var userFindexScore = _customerService.GetById(customerId).Data.FindexScore;
+            var carFindexScore = _carService.GetById(carId).Data.FindexScore;
+            if (carFindexScore < userFindexScore)
+            {
+                return new SuccessResult("Insufficient FindexScore");
+            }
+            return new ErrorResult("Your Findex Score are Insufficient to Rent This Car");
         }
 
         [ValidationAspect(typeof(RentalValidator))]

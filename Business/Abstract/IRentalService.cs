@@ -16,5 +16,6 @@ namespace Business.Abstract
         IDataResult<Rental> GetById(int id);
         IDataResult<List<RentalDetailDto>> GetRentalDetails();
         IResult IsRentable(Rental rental);
+        IResult CheckFindexScore(int customerId,int carId);
     }
 }

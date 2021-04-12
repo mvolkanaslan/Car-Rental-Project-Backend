@@ -51,6 +51,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(), Messages.ListMsg);
         }
 
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetailsByEmail(string email)
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(u=>u.Email==email), Messages.ListMsg);
+        }
+
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Update(Customer customer)
         {

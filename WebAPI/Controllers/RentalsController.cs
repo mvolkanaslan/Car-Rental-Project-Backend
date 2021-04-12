@@ -60,6 +60,7 @@ namespace WebAPI.Controllers
         }
 
 
+
         [HttpPost("Add")]
         public IActionResult Add(Rental rental)
         {
@@ -76,6 +77,19 @@ namespace WebAPI.Controllers
         public IActionResult IsRentable(Rental rental)
         {
             var result = _rentalService.IsRentable(rental);
+
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+        [HttpGet("CheckFindex")]
+        public IActionResult CheckFindex(int customerId,int carId)
+        {
+            var result = _rentalService.CheckFindexScore(customerId,carId);
 
             if (result.IsSuccess)
             {
