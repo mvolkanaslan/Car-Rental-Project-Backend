@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
+
     [ApiController]
     public class AuthController : Controller
     {
@@ -54,6 +55,28 @@ namespace WebAPI.Controllers
             }
 
             return BadRequest(result.Message);
+        }
+        [HttpPost("UserUpdate")]
+        public ActionResult UserUpdate(UserForUpdateDto userForUpdateDto)
+        {
+            var result = _authService.Update(userForUpdateDto);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+
+        }
+        [HttpPost("ChangePassword")]
+        public ActionResult ChangePassword(UserForUpdateDto userForUpdateDtoo)
+        {
+            var result = _authService.ChangePassword(userForUpdateDtoo);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+
         }
     }
 }

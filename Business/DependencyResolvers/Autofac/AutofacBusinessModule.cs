@@ -38,6 +38,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfColorDal>().As<IColorDal>().SingleInstance();
             builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
+            builder.RegisterType<EfCreditCardDal>().As<ICreditCardDal>().SingleInstance();
 
 
             builder.RegisterType<AuthManager>().As<IAuthService>();

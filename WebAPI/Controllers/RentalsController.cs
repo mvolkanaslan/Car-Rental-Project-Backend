@@ -58,6 +58,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("RentalDetailsByCustomerId")]
+        public IActionResult RentalDetailsByCustomerId(int id)
+        {
+            var result = _rentalService.GetRentalDetailsByCustomerId(id);
+
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
 
 

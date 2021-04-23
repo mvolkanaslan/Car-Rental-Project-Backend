@@ -14,7 +14,7 @@ namespace DataAccess.Concrete.InMemory
         // Şuan bir database olmadığı için dataları burada barındırdık.
         //Bu class için global _Car değişkeni
 
-        List<Car> _Cars;
+        
 
         // class default olarak dataları constructor blogu içerisinde oluşturdu
         public InMemoryCarDal()

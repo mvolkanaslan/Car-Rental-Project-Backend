@@ -13,16 +13,20 @@ namespace Business.Concrete
     {
         public IResult IsPaymentValid(Payment payment)
         {
+            /*
             if( payment.CardNumber==FakeCard.CardNUmber
                 && payment.MounthOfExp==FakeCard.MounthOfExp
                 && payment.YearOfExp==FakeCard.YearOfExp
-                && payment.CVC==FakeCard.CVC
+                && payment.CVV==FakeCard.CVV
                 && payment.Amount <= FakeCard.Amount)
             {
                 return new SuccessResult(Messages.PaymentSuccessful);
             }
 
           return new ErrorResult(Messages.PaymentUnSeccessful);
+            */
+
+            return new SuccessResult(Messages.PaymentSuccessful);
         }
     }
 }

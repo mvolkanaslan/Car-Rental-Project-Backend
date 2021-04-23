@@ -11,7 +11,7 @@ namespace Business.Constants
         public static string HolderName = "MEHMET VOLKAN ASLAN";
         public static string MounthOfExp = "06";
         public static string YearOfExp = "2023";
-        public static string CVC = "234";
+        public static string CVV = "234";
         public static int Amount = 5800;
     }
 }

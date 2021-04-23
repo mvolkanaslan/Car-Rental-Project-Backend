@@ -23,16 +23,17 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CustomerValidator))]
+        [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Add(Customer customer)
         {
             
                 _customerDal.Add(customer);
                 return new SuccessResult(Messages.Add_Msg);
         }
-
+        [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Delete(Customer customer)
         {
-            _customerDal.Delete(customer);
+            _customerDal.Delete(customer);  
             return new SuccessResult(Messages.DeleteMsg);
         }
         [CacheAspect]
@@ -40,7 +41,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.ListMsg);
         }
-        [CacheAspect]
+
         public IDataResult<Customer> GetById(int id)
         {
             return new SuccessDataResult<Customer>(_customerDal.GetById(c => c.CustomerId == id), Messages.ListMsg);
@@ -56,6 +57,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(u=>u.Email==email), Messages.ListMsg);
         }
 
+        [CacheRemoveAspect("ICustomerService.Get")]
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Update(Customer customer)
         {

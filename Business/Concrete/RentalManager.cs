@@ -3,6 +3,7 @@ using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -31,7 +32,11 @@ namespace Business.Concrete
         [CacheRemoveAspect("IRentalService.Get")]
         public IResult Add(Rental rental)
         {
-            
+            IResult result = BusinessRules.Run(IsRentable(rental));
+            if (result != null)
+            {
+                return result;
+            }
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.RentalValid);
         }
@@ -59,10 +64,11 @@ namespace Business.Concrete
 
         public IResult IsRentable(Rental rental)
         {
-            var result = _rentalDal.GetAll();
-            if (result.Where(r => r.CarId == rental.CarId
-                    && r.ReturnDate.Ticks >= rental.RentDate.Ticks
-                    && r.RentDate.Ticks <= rental.ReturnDate.Ticks).Any())
+            
+            var result = _rentalDal.GetAll(r => r.CarId == rental.CarId
+                    && r.ReturnDate >= rental.RentDate
+                    && r.RentDate <= rental.ReturnDate).Any();
+            if (result)
                 return new ErrorResult(Messages.RentalInValid);
             return new SuccessResult(Messages.CarIsRentable);
         }
@@ -70,7 +76,7 @@ namespace Business.Concrete
         {
             var userFindexScore = _customerService.GetById(customerId).Data.FindexScore;
             var carFindexScore = _carService.GetById(carId).Data.FindexScore;
-            if (carFindexScore < userFindexScore)
+            if (carFindexScore <= userFindexScore)
             {
                 return new SuccessResult("Insufficient FindexScore");
             }
@@ -81,6 +87,11 @@ namespace Business.Concrete
         public IResult Update(Rental rental)
         {
             return new SuccessResult(Messages.UpdateMsg);
+        }
+
+        public IDataResult<List<RentalDetailDto>> GetRentalDetailsByCustomerId(int id)
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(r => r.CustomerId == id), Messages.ListMsg);
         }
     }
 }

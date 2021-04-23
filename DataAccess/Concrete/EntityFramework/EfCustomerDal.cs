@@ -25,9 +25,10 @@ namespace DataAccess.Concrete.EntityFramework
                                  UserId=user.Id,
                                  CustomerId=customer.CustomerId,
                                  CompanyName = customer.CompanyName,
-                                 CustomerName = $"{user.FirstName} {user.LastName}",
+                                 FirstName = user.FirstName,
+                                 LastName=user.LastName,
                                  Email=user.Email,
-                                 FindexPoint=customer.FindexScore,
+                                 FindexScore=customer.FindexScore,
                                  Claims =   (from uoc in context.UserOperationClaims.Where(c => c.UserId == user.Id)
                                                   join claim in context.OperationClaims
                                                   on uoc.OperationClaimId equals claim.Id
