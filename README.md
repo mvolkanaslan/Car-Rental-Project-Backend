@@ -6,7 +6,7 @@ Katmanlı mimari ile tasarladığımız bu projede OOP tarafında Entity Framewo
 
 # Layers
 
-- [Business](https://github.com/cenkerkumlucali/ReCapProject/tree/master/Business)
+- [Business](https://github.com/mvolkanaslan/ReCapProject/tree/master/Business)
   : Database ile kullancı arasındaki iletişimi
   yöneten Business Katmanı'nda Abstract,Concrete
   sınıflarında ilgilioperasyonlar tanımlanmıştır.
@@ -17,7 +17,7 @@ Katmanlı mimari ile tasarladığımız bu projede OOP tarafında Entity Framewo
   aşamalarının sağlandığı BusinessAspects sınıfı
   yer almaktadır.
 
-- [Core](https://github.com/cenkerkumlucali/ReCapProject/tree/master/Core)
+- [Core](https://github.com/mvolkanaslan/ReCapProject/tree/master/Core)
   : Bu katman diğer katmanlara destek sağlayan
   merkezi bir katmandır. Business katmanındaki
   operasyonlarda kullanıalcak Caching,Validation
@@ -26,16 +26,16 @@ Katmanlı mimari ile tasarladığımız bu projede OOP tarafında Entity Framewo
   Extention operasyonları yeralmaktadır.Core
   katmanının .Net Core ile hiçbir bağlantısı
   yoktur.
-- [DataAccess](https://github.com/cenkerkumlucali/ReCapProject/tree/master/DataAccess):Veritabanı
+- [DataAccess](https://github.com/mvolkanaslan/ReCapProject/tree/master/DataAccesss):Veritabanı
   iletişiminin sağlandığı katmandır. Database
   işlemleri EntityFrameWork ile gerçekleştirlir.
-- [Entites](https://github.com/cenkerkumlucali/ReCapProject/tree/master/Entities):Veritabanı
+- [Entites](https://github.com/mvolkanaslan/ReCapProject/tree/master/Entities):Veritabanı
   nesnelerinin yer aldığı Entities Katmanı'nda
   Abstract ve Concrete olmak üzere iki adet klasör
   bulunmaktadır.Abstract klasörü soyut nesneleri,
   Concrete klasörü somut nesneleri tutmak için
   oluşturulmuştur.
-- [WebAPI](https://github.com/cenkerkumlucali/ReCapProject/tree/master/WebAPI)
+- [WebAPI](https://github.com/mvolkanaslan/ReCapProject/tree/master/WebAPI)
   Web Api ile Tüm ortamlar arasında iletişim
   sağlanmaktadır.
 
